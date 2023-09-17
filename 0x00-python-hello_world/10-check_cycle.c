@@ -12,9 +12,9 @@ int check_cycle(listint_t *list)
 	listint_t *temp;
 
 	current_node = list;
-	temp = current_node->next;
 	while (current_node)
 	{
+		temp = list;
 		while(temp)
 		{
 			if (temp->next == current_node)
