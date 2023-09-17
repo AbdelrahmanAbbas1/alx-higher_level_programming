@@ -11,8 +11,6 @@ int check_cycle(listint_t *list)
 	listint_t *current_node;
 	listint_t *temp;
 
-	if (list == NULL)
-		return (0);
 	current_node = list;
 	while (current_node)
 	{
