@@ -3,7 +3,7 @@ import calculator_1 as cal
 from sys import argv
 if __name__ == "__main__":
     if len(argv) != 4:
-        print("usage: ./100-my_calculator.py <a> <operator> <b>")
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     ops = {"+": cal.add, "-": cal.sub, "*": cal.mul, "/": cal.div}
     if argv[2] in ops:
