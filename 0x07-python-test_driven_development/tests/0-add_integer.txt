@@ -1,0 +1,48 @@
+# 0-add_integer.txt
+
+===========================
+How to Use 0-add_integer.py
+===========================
+
+This module defines a function called add_integer(a, b)
+that adds two integers and floats (casted to integers)
+
+Usage
+=====
+
+``add_integer(...)`` returns the sum of its two arguments using the ``+`` operator
+
+::
+
+>>> add = __import__("0-add_integer").add_integer
+>>> add(2, 3)
+5
+
+>>> add(2, -2)
+0
+
+>>> add(2.5, 3)
+5
+
+>>> add(2)
+100
+
+>>> add('a', 4)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add(4, 'b')
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+>>> add(None)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+>>> add(float('nan'))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer
+
+>>> add(float('inf'))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
