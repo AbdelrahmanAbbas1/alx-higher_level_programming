@@ -1,0 +1,40 @@
+# 3-say_my_name.txt
+
+===========================
+How to Use 3-say_my_name.py
+===========================
+
+This module defines a function called ``say_my_name(first_name, last_name="")
+
+Usage
+=====
+
+``say_my_name(...)`` prints the full name according to its arguments ``first_name`` and ``last_name``
+
+::
+
+>>> say = __import__("3-say_my_name").say_my_name
+>>> say("Abdelrahman", "Abbas")
+My name is Abdelrahman Abbas
+
+>>> say(33, "Abdelrahman")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say("Abdelrahman", 2.2)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say({"Abdelrahman, Abbas"}, -2)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say(None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say("", "Abdelrahman")
+My name is  Abdelrahman
+
+>>> say("Abdelrahman")
+My name is Abdelrahman 
