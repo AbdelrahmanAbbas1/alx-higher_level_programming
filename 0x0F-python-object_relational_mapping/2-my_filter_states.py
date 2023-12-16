@@ -9,7 +9,7 @@ if __name__ == '__main__':
                          sys.argv[3], 3306)
     cur = db.cursor()
     cur.execute("""
-                SELECT * FROM states WHERE name = '{}'
+                SELECT * FROM states WHERE name LIKE BINARY '{}'
                 ORDER BY states.id
                 """.format(sys.argv[4]))
     states = cur.fetchall()
