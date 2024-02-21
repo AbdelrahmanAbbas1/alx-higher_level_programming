@@ -11,7 +11,7 @@ if __name__ == '__main__':
                 SELECT * FROM states WHERE name LIKE BINARY '{}'
                 Order BY states.id
                 """.format(sys.argv[4]))
-    state = cur.fetchall()
+    states = cur.fetchall()
     for state in states:
         print(state)
     cur.close()
