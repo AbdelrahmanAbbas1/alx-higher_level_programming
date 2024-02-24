@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module defines a class State"""
+"""Lists all states from the database hbtn_0e_6_usa"""
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
@@ -14,3 +14,4 @@ if __name__ == '__main__':
 
     for state in session.query(State):
         print('{}: {}'.format(state.id, state.name))
+    session.close()
