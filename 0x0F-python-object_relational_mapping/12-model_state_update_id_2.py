@@ -14,4 +14,4 @@ if __name__ == '__main__':
     session = Session()
 
     state = session.query(State).filter(State.id == 2).first()
-    print(state.name)
+    state.name = 'New Mexico'
