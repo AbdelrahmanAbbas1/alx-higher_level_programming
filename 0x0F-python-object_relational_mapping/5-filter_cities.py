@@ -1,33 +1,20 @@
 #!/usr/bin/python3
-"""
- the takes in the name of a state as an argument
-and lists all cities of that state
-"""
-
-from sys import argv
+"""List all cities of the state when passed as an argument"""
 import MySQLdb
+import sys
 
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3],
-                         host='localhost',
-                         port=3306)
-
+if __name__ == '__main__':
+    db = MySQLdb.connect('localhost', sys.argv[1], sys.argv[2], sys.argv[3])
     cur = db.cursor()
-    sql = """
-        SELECT cities.name
-        FROM states
-        INNER JOIN cities ON states.id=cities.state_id
-        WHERE states.name = %s
-        ORDER BY cities.id ASC"""
-
-    cur.execute(sql, (argv[4],))
-
+    cur.execute("""
+                SELECT cities.name FROM cities
+                LEFT JOIN states
+                ON cities.state_id = states.id
+                WHERE states.name LIKE BINARY %s
+                """, (sys.argv[4],))
     cities = cur.fetchall()
-
-    print(", ".join([city[0] for city in cities]))
-
+    city = list(row[0] for row in cities)
+    print(*city, sep=", ")
     cur.close()
     db.close()

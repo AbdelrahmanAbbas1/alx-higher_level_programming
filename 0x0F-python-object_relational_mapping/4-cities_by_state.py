@@ -1,26 +1,19 @@
 #!/usr/bin/python3
-"""lists all of the  cities from the database hbtn_0e_4_usa"""
-
-from sys import argv
+"""Lists all cities from teh database hbtn_0e_4_usa"""
 import MySQLdb
+import sys
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3],
-                         host='localhost',
-                         port=3306)
 
+if __name__ == '__main__':
+    db = MySQLdb.connect('localhost', sys.argv[1], sys.argv[2], sys.argv[3])
     cur = db.cursor()
-    sql = """SELECT c.id, c.name, s.name
-            FROM states s, cities c
-            WHERE c.state_id = s.id
-            ORDER BY id ASC"""
-
-    cur.execute(sql)
-
+    cur.execute("""
+                SELECT cities.id, cities.name, states.name FROM cities
+                INNER JOIN states
+                ON states.id = cities.state_id
+                ORDER BY cities.id
+                """)
     cities = cur.fetchall()
-
     for city in cities:
         print(city)
 

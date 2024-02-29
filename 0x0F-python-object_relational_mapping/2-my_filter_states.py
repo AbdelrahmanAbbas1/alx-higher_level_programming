@@ -1,27 +1,18 @@
 #!/usr/bin/python3
-'''
-get all of the  states module
-'''
-
-from sys import argv
+"""Lists all values in states where name matches the argument"""
 import MySQLdb
+import sys
 
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(user=argv[1],
-                         passwd=argv[2],
-                         db=argv[3],
-                         host='localhost',
-                         port=3306)
-
+if __name__ == '__main__':
+    db = MySQLdb.connect('localhost', sys.argv[1], sys.argv[2], sys.argv[3])
     cur = db.cursor()
-
-    sql = """ SELECT * FROM states WHERE
-                name LIKE BINARY '{}'
-                ORDER BY id ASC """.format(argv[4])
-
-    cur.execute(sql)
+    cur.execute("""
+                SELECT * FROM states WHERE name LIKE BINARY '{}'
+                Order BY states.id
+                """.format(sys.argv[4]))
     states = cur.fetchall()
-
     for state in states:
         print(state)
+    cur.close()
+    db.close()
