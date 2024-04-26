@@ -10,7 +10,4 @@ if __name__ == "__main__":
     token = sys.argv[2]
 
     res = requests.get(url, auth=(username, token))
-    if res.status_code == 200:
-        print(res.json()["id"])
-    else:
-        print("None")
+    print(res.json().get("id"))
