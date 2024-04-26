@@ -5,10 +5,12 @@ import sys
 
 
 if __name__ == "__main__":
-    url = ""
+    url = "https://api.github.com/user"
     username = sys.argv[1]
     token = sys.argv[2]
 
-    res = requests.get("https://api.github.com/user", auth=(username, token))
+    res = requests.get(url, auth=(username, token))
     if res.status_code == 200:
         print(res.json()["id"])
+    else:
+        print("None")
