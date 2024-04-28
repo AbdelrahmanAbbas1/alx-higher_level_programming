@@ -11,8 +11,10 @@ if __name__ == "__main__":
 
     res = requests.get(url)
     resjson = res.json()
-    for i in range(0, 10):
-        sha = resjson[i].get("sha")
-        author = resjson[i].get("commit").get("author").get("name")
-        date = resjson[i].get("commit").get("author").get("date")
-        print(f"{sha}: {author}")
+    for i in range(0, len(resjson)):
+        if i < 10:
+            sha = resjson[i].get("sha")
+            author = resjson[i].get("commit").get("author").get("name")
+            print(f"{sha}: {author}")
+        else:
+            break
